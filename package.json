@@ -1,0 +1,16 @@
+{
+  "name": "webCrawl",
+  "version": "0.0.1",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "minimist": "^1.2.0",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {
+    "jest": "*"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node main.js"
+  }
+}

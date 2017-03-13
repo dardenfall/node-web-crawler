@@ -1,0 +1,9 @@
+{
+  "esversion": 6,
+  "node": true,
+  "globals": {
+     "expect": true,
+     "test": true,
+     "beforeAll": true
+  }
+}
