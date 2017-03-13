@@ -35,3 +35,6 @@ jspm_packages/
 
 # dotenv environment variables file
 .env
+
+# ignore output files
+statics.json

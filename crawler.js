@@ -2,6 +2,7 @@
 
 var fetch = require('node-fetch'); //mimics window.fetch style XMLHttpRequests
 var cheerio = require('cheerio'); //jQuery-like html parser
+var fs = require('fs');
 var parentUrl;
 var queue = [];
 var statics = [];
@@ -11,6 +12,15 @@ var crawler = {};
 
 crawler.setParent = function(parent) {
   parentUrl = parent;
+};
+
+crawler.saveJson = function(data) {
+  fs.writeFile("statics.json", data, function(err) {
+    if(err) {
+        return console.log(err);
+    }
+    console.log("statics.json file saved");
+  });
 };
 
 crawler.fetchAndAdd = function(url) {
@@ -31,7 +41,7 @@ crawler.fetchAndAdd = function(url) {
           completedUrls.push(url);
           self.fetchAndAdd(next);
         } else {
-          console.log(statics); //print the results
+          self.saveJson(JSON.stringify(statics)); //print the results
           return;
         }
     })
