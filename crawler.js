@@ -33,7 +33,7 @@ crawler.fetchAndAdd = function(url) {
         return res.text();
     }).then(function(body) {
         var $ = cheerio.load(body); //parse the body of the page
-        console.log(queue.length, url); //Logging to show progress
+        console.log("\"" + url + "\","); //Logging to show progress
         self.getAnchors($);
         self.getStatics($, url);
         var next = queue.shift();
@@ -98,10 +98,12 @@ crawler.getStatics = function($, url) {
 };
 
 crawler.deLocalize = function(url, parent) {
+  console.log("----------", url, parent)
   //if links are relative make them absolute
   var protocol = parent.toLowerCase().substring(0, 5) === "https" ? "https" : "http";
   var topLevel = parent.replace(/\/$/, '');
   var absUrl;
+
   if (url.match(/^\/{2}/)) { //if two slashes append protocol
     absUrl = protocol + ":" + url;
   } else if (url.match(/^\//)) { //If one slash append parentUrl
