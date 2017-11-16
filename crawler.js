@@ -82,7 +82,7 @@ crawler.getStatics = function($, url) {
   var resources = [...images, ...scripts, ...links, ...resourceAnchors];
   resources.map(resource => {
     var src = resource.attribs.src;
-    var href = resource.attribs.href;
+    var href = resource.attribs.href || resource.attribs['data-href'];
     if (resource.attribs.rel === "stylesheet" || resource.name === "a") {
       resourceArray.push(self.deLocalize(href, parentUrl));
     } else if (src) {
